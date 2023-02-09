@@ -1,0 +1,310 @@
+sriovperformancecompute-psi-tes-21-17:
+  host: 172.31.0.63
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-22:
+  host: 172.31.0.79
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-17:
+  host: 172.31.0.76
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-20:
+  host: 172.31.0.82
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-23:
+  host: 172.31.0.70
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-21:
+  host: 172.31.0.93
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-18:
+  host: 172.31.0.69
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-18:
+  host: 172.31.0.30
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-19:
+  host: 172.31.0.71
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-11:
+  host: 172.31.0.75
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-16:
+  host: 172.31.0.50
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-7:
+  host: 172.31.0.42
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-12:
+  host: 172.31.0.45
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-16:
+  host: 172.31.0.58
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-14:
+  host: 172.31.0.48
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-15:
+  host: 172.31.0.60
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-8:
+  host: 172.31.0.39
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-10:
+  host: 172.31.0.28
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-14:
+  host: 172.31.0.41
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-9:
+  host: 172.31.0.56
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-13:
+  host: 172.31.0.57
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-15:
+  host: 172.31.0.59
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-11:
+  host: 172.31.0.43
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+hugeovscompute-psi-tes-21-1:
+  host: 172.31.0.51
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+hugeovscompute-psi-tes-21-0:
+  host: 172.31.0.16
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-10:
+  host: 172.31.0.22
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-11:
+  host: 172.31.0.40
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-9:
+  host: 172.31.0.31
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-8:
+  host: 172.31.0.52
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-7:
+  host: 172.31.0.34
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-5:
+  host: 172.31.0.18
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-12:
+  host: 172.31.0.25
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-13:
+  host: 172.31.0.27
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-6:
+  host: 172.31.0.46
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-6:
+  host: 172.31.0.38
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-8:
+  host: 172.31.0.14
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-7:
+  host: 172.31.0.44
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-5:
+  host: 172.31.0.54
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-5:
+  host: 172.31.0.49
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-6:
+  host: 172.31.0.47
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+storage-psi-tes-21-1:
+  host: 172.31.0.33
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+storage-psi-tes-21-0:
+  host: 172.31.0.12
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+storage-psi-tes-21-4:
+  host: 172.31.0.15
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-3:
+  host: 172.31.0.26
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+storage-psi-tes-21-2:
+  host: 172.31.0.21
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+storage-psi-tes-21-5:
+  host: 172.31.0.13
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-1:
+  host: 172.31.0.32
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-2:
+  host: 172.31.0.19
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-0:
+  host: 172.31.0.35
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-4:
+  host: 172.31.0.29
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+controller-psi-tes-21-1:
+  host: 172.31.0.5
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-3:
+  host: 172.31.0.23
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-2:
+  host: 172.31.0.7
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-3:
+  host: 172.31.0.11
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+sriovperformancecompute-psi-tes-21-2:
+  host: 172.31.0.37
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+storage-psi-tes-21-3:
+  host: 172.31.0.17
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+avrscompute-psi-tes-21-0:
+  host: 172.31.0.36
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+controller-psi-tes-21-0:
+  host: 172.31.0.9
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-1:
+  host: 172.31.0.6
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-4:
+  host: 172.31.0.20
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+ovscompute-psi-tes-21-0:
+  host: 172.31.0.8
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin
+controller-psi-tes-21-2:
+  host: 172.31.0.10
+  user: heat-admin
+  sudo: True
+  sudo_user: heat-admin

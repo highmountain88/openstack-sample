@@ -1,0 +1,279 @@
+#! /usr/bin/python
+
+###########################################################################
+#
+#   Filename:           nuage-avrs-config
+#   Description:        This script provisions the AVRS 
+#
+###########################################################################
+#
+#              Copyright (c) 2018 Nuage Networks
+#
+###########################################################################
+
+
+import sys
+sys.path.append ('/usr/share/openvswitch/python')
+sys.path.append ('/usr/share/openvswitch/python/ovs')
+import argparse
+import nuage.vlog
+import nuage.utils
+import nuage.vrs_common
+import ovs.dirs
+import ovs.util
+import re
+import os
+import json
+
+vlog = nuage.vlog.Vlog ("nuage-avrs-config")
+
+def executeCmd(cmd, exitOnErr):
+    vlog.info("cmd: %s" % cmd)
+    r = nuage.utils.call_prog_as_is(cmd)
+    if r[0] is not 0 :
+       vlog.warn("Unable to execute: \"%s\"" % cmd)
+       vlog.warn("rc: %s, out: %s, err: %s" % (r[0], r[1], r[2]))
+       if exitOnErr == True:
+          sys.exit(1)
+    return r
+
+def read_fp_config(fp_uplink_map) :
+    config_file = ''
+    if (os.path.isfile('/etc/fast-path.env') is True) :
+        config_file = '/etc/fast-path.env'
+    elif (os.path.isfile('/usr/local/etc/fast-path.env') is True) :
+        config_file = '/usr/local/etc/fast-path.env'
+    if len(config_file) is 0:
+        vlog.warn ('Unable to identify fast-path config file')
+        return
+    vlog.info ('fast-path config file : %s' % config_file)
+    for line in open(config_file):
+        li = line.strip( )
+        if li.startswith('#') :
+            continue
+        if 'FP_PORTS' not in li :
+            continue
+        match = re.search(r'.*FP_PORTS:=\'(.*)\'}', li)
+        if not match :
+            match = re.search(r'.*FP_PORTS:=(.*)}', li)
+            if not match :
+                continue
+        for pci_id in match.group(1).split( ):
+            fp_uplink_map[pci_id] = ""
+            vlog.info ("Identify fp-port pci-id:%s" % (pci_id))
+        break
+
+def populate_fp_uplink_info(fp_uplink_map) :
+    for pci_id in fp_uplink_map :
+        cmd = 'ls /sys/bus/pci/devices/' + pci_id + '/net'
+        r = nuage.utils.call_prog_as_is(cmd)
+        if r[0] is 0 :
+            fp_uplink_map[pci_id] = r[1].strip( ).lstrip('_')
+            vlog.info ("Associate physical %s->%s" % (pci_id, fp_uplink_map[pci_id]))
+        else:
+            cmd = 'ls /sys/bus/pci/devices/' + pci_id + '/virtio*/net'
+            r = nuage.utils.call_prog_as_is(cmd)
+            if r[0] is 0 :
+                fp_uplink_map[pci_id] = r[1].strip( ).lstrip('_')
+                vlog.info ("Associate virtual %s->%s" % (pci_id, fp_uplink_map[pci_id]))
+            else:
+                vlog.emer ("Unable to find the device for pci_id %s" % pci_id)
+                return
+
+def prepare_vrs_config_file(fp_uplink_map, is_enable) :
+    fp_str = ''
+    for fp_pci_id, fp_port in fp_uplink_map.items( ) :
+        if len(fp_str) : 
+            fp_str = fp_str + ',' + fp_port
+        else : 
+            fp_str = fp_port
+    default_conf = "/etc/default/openvswitch"
+    inf = open(default_conf)
+    content = inf.readlines( )
+    inf.close( )
+    hashc = '#'
+    fp_ports = "FP_PORTS="
+    outf = open(default_conf, 'w')
+    for line in content :
+        if fp_ports in line :
+            if is_enable is True :
+                line = fp_ports + fp_str + "\n"
+            else :
+                line = hashc + fp_ports + fp_str + "\n"
+            vlog.info ("write in vrs-config-file:%s" % line)
+        outf.write(line)
+    outf.close( )
+
+def get_run_level( ) :
+    cmd = "/sbin/runlevel | cut -d ' ' -f 2"
+    r = executeCmd(cmd, True)
+    run_level = r[1].rstrip( )
+    vlog.info("run-level: %s" % run_level)
+    return run_level
+
+"""
+   pre-start : Prepare the FP_PORTS parameter for VRS.
+"""
+def pre_start_avrs_config( ) :
+    fp_uplink_map = { }
+    read_fp_config(fp_uplink_map)
+    populate_fp_uplink_info(fp_uplink_map)
+    prepare_vrs_config_file(fp_uplink_map, True)
+    fp_port_list = read_fp_config_from_vrs()
+    vlog.info("fp-port-list:%s" % fp_port_list)
+    for fp_port in fp_port_list :
+        cmd = "ip link set dev %s nomaster" %fp_port
+        r = executeCmd(cmd, True)
+
+
+def read_fp_config_from_vrs() :
+    fp_port_list = [ ]
+    if (os.path.isfile("/etc/default/openvswitch") is True) : 
+        cmd = 'grep FP_PORTS /etc/default/openvswitch | awk \'BEGIN { FS="[#= \t]+" } NF==2 { print $2; exit } NF==3 {where = match($0, "#"); if (!where) { print $3; exit} }\'';
+    elif (os.path.isfile("/etc/default/openvswitch-switch") is True) : 
+        cmd = 'grep FP_PORTS /etc/default/openvswitch-switch | awk \'BEGIN { FS="[#= \t]+" } NF==2 { print $2; exit } NF==3 {where = match($0, "#"); if (!where) { print $3; exit} }\'';
+    elif (os.path.isfile("/etc/sysconfig/openvswitch") is True) : 
+        cmd = 'grep FP_PORTS /etc/sysconfig/openvswitch | awk \'BEGIN { FS="[#= \t]+" } NF==2 { print $2; exit } NF==3 {where = match($0, "#"); if (!where) { print $3; exit} }\'';
+    r = nuage.utils.call_prog_as_is(cmd)
+    if r[0] is not 0 :
+        return fp_port_list
+    else :
+        vlog.info("fp-config:%s" % r[1].strip( ))
+        fp_port_list = r[1].strip( ).split(',')
+    return fp_port_list
+
+"""
+   post-start : Restart VRS and bring up fp-ports
+"""
+def post_start_avrs_config( ) :
+    fp_port_list = read_fp_config_from_vrs()
+    vlog.info("fp-port-list:%s" % fp_port_list)
+    nTries = 50
+    while (nTries):
+        cmd = "systemctl status virtual-accelerator.service   | grep -q \"Active: active\""
+        r = executeCmd(cmd, True)
+        if r[0] is 0:
+            for port in fp_port_list:
+                cmd = "ifconfig " + port + " up"
+                r = executeCmd(cmd, True)
+            try:
+                cmd = "systemctl restart network"
+                r = executeCmd(cmd, True)
+            except:
+                import time
+                time.sleep(10)
+                r = executeCmd(cmd, True)
+            cmd = "systemctl restart openvswitch"
+            r = executeCmd(cmd, True)
+            cmd = ("if command -v docker &> /dev/null;"
+                   "then docker_id=$(docker ps| grep neutron_fastpath_agent| awk '{print $1}');"
+                   "if [[ $docker_id ]];then docker restart $docker_id; fi;"
+                   "elif command -v podman &> /dev/null;"
+                   "then podman_id=$(podman ps| grep neutron_fastpath_agent| awk '{print $1}');"
+                   "if [[ $podman_id ]];then podman restart $podman_id; fi;"
+                   "fi")
+            r = executeCmd(cmd, True)
+            break
+        else:
+            cmd = "sleep 2"
+            vlog.warn("VA is not active yet, wait for 2 secs..")
+            r = executeCmd(cmd, True)
+            nTries = nTries - 1
+
+
+"""
+   pre-stop : Stop VRS and bring down fp-ports.
+"""
+def pre_stop_avrs_config( ) :
+    fp_port_list = read_fp_config_from_vrs()
+    vlog.info("fp-port-list:%s" % fp_port_list)
+    cmd = "systemctl stop openvswitch"
+    r = executeCmd(cmd, True)
+
+"""
+   post-stop : Start VRS and bring up fp-ports.
+"""
+def post_stop_avrs_config( ) :
+    fp_port_list = read_fp_config_from_vrs()
+    vlog.info("fp-port-list:%s" % fp_port_list)
+    cmd = "systemctl start openvswitch"
+    r = executeCmd(cmd, True)
+    for port in fp_port_list:
+        cmd = "ifconfig " + port + " up"
+        r = executeCmd(cmd, True)
+    cmd = "systemctl restart network"
+    r = executeCmd(cmd, True)
+
+# 
+# main( ) 
+# 
+def main (argv) :
+
+    parser = argparse.ArgumentParser (
+        description = "Nuage AVRS-config script",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
+    commands = {"pre-start": (pre_start_avrs_config, (0,)),
+                "post-start": (post_start_avrs_config, (0,)),
+                "pre-stop": (pre_stop_avrs_config, (0,)),
+                "post-stop": (post_stop_avrs_config, (0,)),
+                "help": (parser.print_help, (0,))}
+
+    group_description = """\
+pre-start Pre stage for AVRS-start 
+post-start Post stage for AVRS-start 
+pre-stop Pre stage for AVRS-stop 
+post-stop Post stage for AVRS-stop 
+Example:
+nuage-avrs-config pre-start 
+nuage-avrs-config post-start 
+nuage-avrs-config pre-stop 
+nuage-avrs-config post-stop 
+""" 
+
+    group = parser.add_argument_group (title="Commands", description=group_description)
+    group.add_argument ('command', metavar="COMMAND", nargs=1, choices=commands, help="Command to use.")
+    group.add_argument ('command_args', metavar="ARG", nargs='*', help="Arguments to COMMAND.")
+
+    nuage.vlog.add_args (parser)
+    args = parser.parse_args ()
+    args.log_file = "%s/%s.log" % (ovs.dirs.LOGDIR, ovs.util.PROGRAM_NAME)
+    debug_flag = os.path.isfile("/tmp/start-nuage-avrs-config-log")
+    if debug_flag:
+        args.verbose = [["ANY:CONSOLE:INFO"], ["ANY:SYSLOG:INFO"], ["ANY:FILE:DBG"]]
+    else:
+        args.verbose = [["ANY:CONSOLE:EMER"], ["ANY:SYSLOG:ERR"], ["ANY:FILE:INFO"]]
+    nuage.vlog.handle_args(args)
+
+    command_name = args.command [0]
+    args = args.command_args
+    vlog.info("nuage-avrs-config command:%s" %(command_name))
+
+    if not command_name in commands :
+        vlog.emer ("%s: unknown command \"%s\" (use --help for help)" % (argv [0], command_name))
+        sys.exit(1)
+
+    func, n_args = commands [command_name]
+    if type (n_args) == tuple :
+        if len (args) < n_args [0] :
+            vlog.emer ("%s: \"%s\" requires at least %d arguments but only %d provided\n"
+                       % (argv [0], command_name, n_args, len(args)))
+            sys.exit(1)
+    elif type (n_args) == int :
+        if len (args) != n_args :
+            vlog.emer ("%s: \"%s\" requires %d arguments but %d provided\n"
+                       % (argv [0], command_name, n_args, len(args)))
+            sys.exit(1)
+    else :
+        assert False
+
+    func(*args)
+
+
+if __name__ == '__main__' :
+    try :
+        main(sys.argv)
+    except :
+        vlog.exception ("traceback")
+        sys.exit(1)
+

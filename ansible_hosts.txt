@@ -1,0 +1,227 @@
+
+[Control]
+overcloud-controller-psi-tes-21-2 ansible_ssh_host=172.31.0.10
+overcloud-controller-psi-tes-21-1 ansible_ssh_host=172.31.0.5
+overcloud-controller-psi-tes-21-0 ansible_ssh_host=172.31.0.9
+
+[Control:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[Compute]
+overcloud-ovscompute-psi-tes-21-3 ansible_ssh_host=172.31.0.23
+overcloud-ovscompute-psi-tes-21-4 ansible_ssh_host=172.31.0.20
+overcloud-ovscompute-psi-tes-21-0 ansible_ssh_host=172.31.0.8
+overcloud-ovscompute-psi-tes-21-2 ansible_ssh_host=172.31.0.19
+overcloud-ovscompute-psi-tes-21-1 ansible_ssh_host=172.31.0.6
+overcloud-ovscompute-psi-tes-21-6 ansible_ssh_host=172.31.0.38
+overcloud-ovscompute-psi-tes-21-7 ansible_ssh_host=172.31.0.44
+overcloud-ovscompute-psi-tes-21-8 ansible_ssh_host=172.31.0.14
+overcloud-ovscompute-psi-tes-21-5 ansible_ssh_host=172.31.0.54
+overcloud-ovscompute-psi-tes-21-11 ansible_ssh_host=172.31.0.75
+overcloud-sriovperformancecompute-psi-tes-21-3 ansible_ssh_host=172.31.0.26
+overcloud-sriovperformancecompute-psi-tes-21-0 ansible_ssh_host=172.31.0.35
+overcloud-sriovperformancecompute-psi-tes-21-2 ansible_ssh_host=172.31.0.37
+overcloud-sriovperformancecompute-psi-tes-21-12 ansible_ssh_host=172.31.0.25
+overcloud-sriovperformancecompute-psi-tes-21-11 ansible_ssh_host=172.31.0.40
+overcloud-sriovperformancecompute-psi-tes-21-6 ansible_ssh_host=172.31.0.46
+overcloud-sriovperformancecompute-psi-tes-21-10 ansible_ssh_host=172.31.0.22
+overcloud-sriovperformancecompute-psi-tes-21-7 ansible_ssh_host=172.31.0.34
+overcloud-sriovperformancecompute-psi-tes-21-8 ansible_ssh_host=172.31.0.52
+overcloud-sriovperformancecompute-psi-tes-21-5 ansible_ssh_host=172.31.0.18
+overcloud-sriovperformancecompute-psi-tes-21-13 ansible_ssh_host=172.31.0.27
+overcloud-sriovperformancecompute-psi-tes-21-9 ansible_ssh_host=172.31.0.31
+overcloud-sriovperformancecompute-psi-tes-21-15 ansible_ssh_host=172.31.0.60
+overcloud-sriovperformancecompute-psi-tes-21-16 ansible_ssh_host=172.31.0.58
+overcloud-sriovperformancecompute-psi-tes-21-14 ansible_ssh_host=172.31.0.48
+overcloud-sriovperformancecompute-psi-tes-21-19 ansible_ssh_host=172.31.0.71
+overcloud-sriovperformancecompute-psi-tes-21-22 ansible_ssh_host=172.31.0.79
+overcloud-sriovperformancecompute-psi-tes-21-17 ansible_ssh_host=172.31.0.63
+overcloud-sriovperformancecompute-psi-tes-21-23 ansible_ssh_host=172.31.0.70
+overcloud-sriovperformancecompute-psi-tes-21-18 ansible_ssh_host=172.31.0.30
+overcloud-sriovperformancecompute-psi-tes-21-20 ansible_ssh_host=172.31.0.82
+overcloud-sriovperformancecompute-psi-tes-21-21 ansible_ssh_host=172.31.0.93
+overcloud-hugeovscompute-psi-tes-21-1 ansible_ssh_host=172.31.0.51
+overcloud-hugeovscompute-psi-tes-21-0 ansible_ssh_host=172.31.0.16
+overcloud-avrscompute-psi-tes-21-0 ansible_ssh_host=172.31.0.36
+overcloud-avrscompute-psi-tes-21-4 ansible_ssh_host=172.31.0.29
+overcloud-avrscompute-psi-tes-21-1 ansible_ssh_host=172.31.0.32
+overcloud-avrscompute-psi-tes-21-3 ansible_ssh_host=172.31.0.11
+overcloud-avrscompute-psi-tes-21-2 ansible_ssh_host=172.31.0.7
+overcloud-avrscompute-psi-tes-21-5 ansible_ssh_host=172.31.0.49
+overcloud-avrscompute-psi-tes-21-6 ansible_ssh_host=172.31.0.47
+overcloud-avrscompute-psi-tes-21-15 ansible_ssh_host=172.31.0.59
+overcloud-avrscompute-psi-tes-21-11 ansible_ssh_host=172.31.0.43
+overcloud-avrscompute-psi-tes-21-10 ansible_ssh_host=172.31.0.28
+overcloud-avrscompute-psi-tes-21-7 ansible_ssh_host=172.31.0.42
+overcloud-avrscompute-psi-tes-21-9 ansible_ssh_host=172.31.0.56
+overcloud-avrscompute-psi-tes-21-12 ansible_ssh_host=172.31.0.45
+overcloud-avrscompute-psi-tes-21-16 ansible_ssh_host=172.31.0.50
+overcloud-avrscompute-psi-tes-21-8 ansible_ssh_host=172.31.0.39
+overcloud-avrscompute-psi-tes-21-14 ansible_ssh_host=172.31.0.41
+overcloud-avrscompute-psi-tes-21-13 ansible_ssh_host=172.31.0.57
+overcloud-avrscompute-psi-tes-21-17 ansible_ssh_host=172.31.0.76
+overcloud-avrscompute-psi-tes-21-18 ansible_ssh_host=172.31.0.69
+
+[Compute:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[cephstorage]
+overcloud-storage-psi-tes-21-2 ansible_ssh_host=172.31.0.21
+overcloud-storage-psi-tes-21-3 ansible_ssh_host=172.31.0.17
+overcloud-storage-psi-tes-21-0 ansible_ssh_host=172.31.0.12
+overcloud-storage-psi-tes-21-1 ansible_ssh_host=172.31.0.33
+overcloud-storage-psi-tes-21-5 ansible_ssh_host=172.31.0.13
+overcloud-storage-psi-tes-21-4 ansible_ssh_host=172.31.0.15
+
+[cephstorage:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[AvrsCompute]
+overcloud-avrscompute-psi-tes-21-0 ansible_ssh_host=172.31.0.36
+overcloud-avrscompute-psi-tes-21-4 ansible_ssh_host=172.31.0.29
+overcloud-avrscompute-psi-tes-21-1 ansible_ssh_host=172.31.0.32
+overcloud-avrscompute-psi-tes-21-3 ansible_ssh_host=172.31.0.11
+overcloud-avrscompute-psi-tes-21-2 ansible_ssh_host=172.31.0.7
+overcloud-avrscompute-psi-tes-21-5 ansible_ssh_host=172.31.0.49
+overcloud-avrscompute-psi-tes-21-6 ansible_ssh_host=172.31.0.47
+overcloud-avrscompute-psi-tes-21-15 ansible_ssh_host=172.31.0.59
+overcloud-avrscompute-psi-tes-21-11 ansible_ssh_host=172.31.0.43
+overcloud-avrscompute-psi-tes-21-10 ansible_ssh_host=172.31.0.28
+overcloud-avrscompute-psi-tes-21-7 ansible_ssh_host=172.31.0.42
+overcloud-avrscompute-psi-tes-21-9 ansible_ssh_host=172.31.0.56
+overcloud-avrscompute-psi-tes-21-12 ansible_ssh_host=172.31.0.45
+overcloud-avrscompute-psi-tes-21-16 ansible_ssh_host=172.31.0.50
+overcloud-avrscompute-psi-tes-21-8 ansible_ssh_host=172.31.0.39
+overcloud-avrscompute-psi-tes-21-14 ansible_ssh_host=172.31.0.41
+overcloud-avrscompute-psi-tes-21-13 ansible_ssh_host=172.31.0.57
+overcloud-avrscompute-psi-tes-21-17 ansible_ssh_host=172.31.0.76
+overcloud-avrscompute-psi-tes-21-18 ansible_ssh_host=172.31.0.69
+
+[AvrsCompute:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[CephStorage]
+overcloud-storage-psi-tes-21-2 ansible_ssh_host=172.31.0.21
+overcloud-storage-psi-tes-21-3 ansible_ssh_host=172.31.0.17
+overcloud-storage-psi-tes-21-0 ansible_ssh_host=172.31.0.12
+overcloud-storage-psi-tes-21-1 ansible_ssh_host=172.31.0.33
+overcloud-storage-psi-tes-21-5 ansible_ssh_host=172.31.0.13
+overcloud-storage-psi-tes-21-4 ansible_ssh_host=172.31.0.15
+
+[CephStorage:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[controller]
+overcloud-controller-psi-tes-21-2 ansible_ssh_host=172.31.0.10
+overcloud-controller-psi-tes-21-1 ansible_ssh_host=172.31.0.5
+overcloud-controller-psi-tes-21-0 ansible_ssh_host=172.31.0.9
+
+[controller:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[Sriov]
+overcloud-sriovperformancecompute-psi-tes-21-3 ansible_ssh_host=172.31.0.26
+overcloud-sriovperformancecompute-psi-tes-21-0 ansible_ssh_host=172.31.0.35
+overcloud-sriovperformancecompute-psi-tes-21-2 ansible_ssh_host=172.31.0.37
+overcloud-sriovperformancecompute-psi-tes-21-12 ansible_ssh_host=172.31.0.25
+overcloud-sriovperformancecompute-psi-tes-21-11 ansible_ssh_host=172.31.0.40
+overcloud-sriovperformancecompute-psi-tes-21-6 ansible_ssh_host=172.31.0.46
+overcloud-sriovperformancecompute-psi-tes-21-10 ansible_ssh_host=172.31.0.22
+overcloud-sriovperformancecompute-psi-tes-21-7 ansible_ssh_host=172.31.0.34
+overcloud-sriovperformancecompute-psi-tes-21-8 ansible_ssh_host=172.31.0.52
+overcloud-sriovperformancecompute-psi-tes-21-5 ansible_ssh_host=172.31.0.18
+overcloud-sriovperformancecompute-psi-tes-21-13 ansible_ssh_host=172.31.0.27
+overcloud-sriovperformancecompute-psi-tes-21-9 ansible_ssh_host=172.31.0.31
+overcloud-sriovperformancecompute-psi-tes-21-15 ansible_ssh_host=172.31.0.60
+overcloud-sriovperformancecompute-psi-tes-21-16 ansible_ssh_host=172.31.0.58
+overcloud-sriovperformancecompute-psi-tes-21-14 ansible_ssh_host=172.31.0.48
+overcloud-sriovperformancecompute-psi-tes-21-19 ansible_ssh_host=172.31.0.71
+overcloud-sriovperformancecompute-psi-tes-21-22 ansible_ssh_host=172.31.0.79
+overcloud-sriovperformancecompute-psi-tes-21-17 ansible_ssh_host=172.31.0.63
+overcloud-sriovperformancecompute-psi-tes-21-23 ansible_ssh_host=172.31.0.70
+overcloud-sriovperformancecompute-psi-tes-21-18 ansible_ssh_host=172.31.0.30
+overcloud-sriovperformancecompute-psi-tes-21-20 ansible_ssh_host=172.31.0.82
+overcloud-sriovperformancecompute-psi-tes-21-21 ansible_ssh_host=172.31.0.93
+
+[Sriov:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[compute]
+overcloud-ovscompute-psi-tes-21-3 ansible_ssh_host=172.31.0.23
+overcloud-ovscompute-psi-tes-21-4 ansible_ssh_host=172.31.0.20
+overcloud-ovscompute-psi-tes-21-0 ansible_ssh_host=172.31.0.8
+overcloud-ovscompute-psi-tes-21-2 ansible_ssh_host=172.31.0.19
+overcloud-ovscompute-psi-tes-21-1 ansible_ssh_host=172.31.0.6
+overcloud-ovscompute-psi-tes-21-6 ansible_ssh_host=172.31.0.38
+overcloud-ovscompute-psi-tes-21-7 ansible_ssh_host=172.31.0.44
+overcloud-ovscompute-psi-tes-21-8 ansible_ssh_host=172.31.0.14
+overcloud-ovscompute-psi-tes-21-5 ansible_ssh_host=172.31.0.54
+overcloud-ovscompute-psi-tes-21-11 ansible_ssh_host=172.31.0.75
+overcloud-sriovperformancecompute-psi-tes-21-3 ansible_ssh_host=172.31.0.26
+overcloud-sriovperformancecompute-psi-tes-21-0 ansible_ssh_host=172.31.0.35
+overcloud-sriovperformancecompute-psi-tes-21-2 ansible_ssh_host=172.31.0.37
+overcloud-sriovperformancecompute-psi-tes-21-12 ansible_ssh_host=172.31.0.25
+overcloud-sriovperformancecompute-psi-tes-21-11 ansible_ssh_host=172.31.0.40
+overcloud-sriovperformancecompute-psi-tes-21-6 ansible_ssh_host=172.31.0.46
+overcloud-sriovperformancecompute-psi-tes-21-10 ansible_ssh_host=172.31.0.22
+overcloud-sriovperformancecompute-psi-tes-21-7 ansible_ssh_host=172.31.0.34
+overcloud-sriovperformancecompute-psi-tes-21-8 ansible_ssh_host=172.31.0.52
+overcloud-sriovperformancecompute-psi-tes-21-5 ansible_ssh_host=172.31.0.18
+overcloud-sriovperformancecompute-psi-tes-21-13 ansible_ssh_host=172.31.0.27
+overcloud-sriovperformancecompute-psi-tes-21-9 ansible_ssh_host=172.31.0.31
+overcloud-sriovperformancecompute-psi-tes-21-15 ansible_ssh_host=172.31.0.60
+overcloud-sriovperformancecompute-psi-tes-21-16 ansible_ssh_host=172.31.0.58
+overcloud-sriovperformancecompute-psi-tes-21-14 ansible_ssh_host=172.31.0.48
+overcloud-sriovperformancecompute-psi-tes-21-19 ansible_ssh_host=172.31.0.71
+overcloud-sriovperformancecompute-psi-tes-21-22 ansible_ssh_host=172.31.0.79
+overcloud-sriovperformancecompute-psi-tes-21-17 ansible_ssh_host=172.31.0.63
+overcloud-sriovperformancecompute-psi-tes-21-23 ansible_ssh_host=172.31.0.70
+overcloud-sriovperformancecompute-psi-tes-21-18 ansible_ssh_host=172.31.0.30
+overcloud-sriovperformancecompute-psi-tes-21-20 ansible_ssh_host=172.31.0.82
+overcloud-sriovperformancecompute-psi-tes-21-21 ansible_ssh_host=172.31.0.93
+overcloud-hugeovscompute-psi-tes-21-1 ansible_ssh_host=172.31.0.51
+overcloud-hugeovscompute-psi-tes-21-0 ansible_ssh_host=172.31.0.16
+overcloud-avrscompute-psi-tes-21-0 ansible_ssh_host=172.31.0.36
+overcloud-avrscompute-psi-tes-21-4 ansible_ssh_host=172.31.0.29
+overcloud-avrscompute-psi-tes-21-1 ansible_ssh_host=172.31.0.32
+overcloud-avrscompute-psi-tes-21-3 ansible_ssh_host=172.31.0.11
+overcloud-avrscompute-psi-tes-21-2 ansible_ssh_host=172.31.0.7
+overcloud-avrscompute-psi-tes-21-5 ansible_ssh_host=172.31.0.49
+overcloud-avrscompute-psi-tes-21-6 ansible_ssh_host=172.31.0.47
+overcloud-avrscompute-psi-tes-21-15 ansible_ssh_host=172.31.0.59
+overcloud-avrscompute-psi-tes-21-11 ansible_ssh_host=172.31.0.43
+overcloud-avrscompute-psi-tes-21-10 ansible_ssh_host=172.31.0.28
+overcloud-avrscompute-psi-tes-21-7 ansible_ssh_host=172.31.0.42
+overcloud-avrscompute-psi-tes-21-9 ansible_ssh_host=172.31.0.56
+overcloud-avrscompute-psi-tes-21-12 ansible_ssh_host=172.31.0.45
+overcloud-avrscompute-psi-tes-21-16 ansible_ssh_host=172.31.0.50
+overcloud-avrscompute-psi-tes-21-8 ansible_ssh_host=172.31.0.39
+overcloud-avrscompute-psi-tes-21-14 ansible_ssh_host=172.31.0.41
+overcloud-avrscompute-psi-tes-21-13 ansible_ssh_host=172.31.0.57
+overcloud-avrscompute-psi-tes-21-17 ansible_ssh_host=172.31.0.76
+overcloud-avrscompute-psi-tes-21-18 ansible_ssh_host=172.31.0.69
+
+[compute:vars]
+ansible_user=cbis-admin
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[hypervisor]
+172.31.7.254 ansible_user=cbis-admin
+
+[hypervisor:vars]
+ansible_ssh_private_key_file=/home/stack/.ssh/id_rsa
+
+[undercloud]
+localhost ansible_connection=local
+
+[undercloud:vars]
+current_node_count=62
+intended_node_count=62
+intended_controller_node_count=3
